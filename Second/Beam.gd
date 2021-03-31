@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var DevTools = get_node('/root/World/DevTools')
+#onready var DevTools = get_node('/root/World/DevTools')
 
 onready var ref_ray:Spatial = $ReflectRayCast
 onready var ray:Spatial = $RayCast
@@ -10,6 +10,8 @@ onready var surface_norm_ind:Spatial = $SurfaceNormal
 
 export var show_hit:bool = false
 export var show_normal:bool = false
+export var distance:int = 10
+
 
 func _ready():
 	pass # Replace with function body.

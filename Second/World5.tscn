@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World5.gd" type="Script" id=1]
-[ext_resource path="res://assets/DevTools.tscn" type="PackedScene" id=3]
 [ext_resource path="res://working.gd" type="Script" id=4]
 [ext_resource path="res://Beam.tscn" type="PackedScene" id=6]
 [ext_resource path="res://addons/goutte.camera.trackball/trackball_camera.gd" type="Script" id=7]
@@ -54,8 +53,6 @@ data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1
 [node name="World" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="DevTools" parent="." instance=ExtResource( 3 )]
-
 [node name="Spatial2" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5308, 0 )
 visible = false
@@ -101,9 +98,15 @@ current = true
 script = ExtResource( 7 )
 stabilize_horizon = true
 
-[node name="Beam2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 8.6844e-05, -0.999999, 0, 0.999999, 8.6844e-05, 0.516961, -0.357287, 2.18369 )
+[node name="Beam3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.893771, 0.434572, 0.110997, 0.448524, -0.86597, -0.221183, 0, 0.247472, -0.968894, 1.30838, 1.33915, 0.709846 )
 show_hit = true
+show_normal = true
+
+[node name="Beam2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 8.6844e-05, -0.999999, 0, 0.999999, 8.6844e-05, 0.516961, -0.357287, 1.27198 )
+show_hit = true
+show_normal = true
 
 [node name="Spatial4" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.873908, 0.486091, 0, -0.486091, 0.873908, 0, 2.26611, 0.641985 )
@@ -159,4 +162,14 @@ material/0 = null
 [node name="StaticBody" type="StaticBody" parent="MeshInstance"]
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.099, 0, 0, 0, 1, 0, 3.01357, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance2/StaticBody"]
 shape = SubResource( 5 )
