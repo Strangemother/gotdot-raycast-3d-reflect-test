@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://World5.gd" type="Script" id=1]
+[ext_resource path="res://StepperBeam.gd" type="Script" id=1]
+[ext_resource path="res://Beam.gd" type="Script" id=2]
 [ext_resource path="res://Node2D.gd" type="Script" id=3]
-[ext_resource path="res://working.gd" type="Script" id=4]
+[ext_resource path="res://Gun.gd" type="Script" id=4]
 [ext_resource path="res://Beam.tscn" type="PackedScene" id=6]
 [ext_resource path="res://addons/goutte.camera.trackball/trackball_camera.gd" type="Script" id=7]
 
@@ -15,36 +16,6 @@ data = PoolVector3Array( 0, 1, 0, 0, 1, 0, 0, 0.9955, 0.0951, 0, 1, 0, 0.0093, 0
 resource_name = "New Anim"
 length = 6.0
 loop = true
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("Spatial/working:rotation_degrees:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 186.026, -0.25, 0, 0.25, 0, 360, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 3, 6 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("Spatial/working:rotation_degrees:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 3, 6 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("Spatial/working:rotation_degrees:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 3, 6 )
-}
 
 [sub_resource type="CubeMesh" id=4]
 
@@ -52,7 +23,6 @@ tracks/2/keys = {
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
 [node name="World" type="Spatial"]
-script = ExtResource( 1 )
 
 [node name="Spatial2" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5308, 0 )
@@ -74,6 +44,10 @@ transform = Transform( 0.465398, 0.551822, -0.692022, 0, 0.781858, 0.623456, 0.8
 [node name="Camera3" type="Camera" parent="Spatial2/Spatial2"]
 transform = Transform( 1, -2.08616e-07, -1.78814e-07, 2.68221e-07, 1, 3.65078e-07, 8.9407e-08, -3.7998e-07, 1, 0.274908, -2.23377, -0.198846 )
 current = true
+
+[node name="Beam" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25579, 0 )
+script = ExtResource( 2 )
 
 [node name="Sphere" type="Spatial" parent="."]
 transform = Transform( 1.23412, 0, 0, 0, 1.23411, 0, 0, 0, 1.23411, 0, 5.54834, 0 )
@@ -99,61 +73,12 @@ current = true
 script = ExtResource( 7 )
 stabilize_horizon = true
 
-[node name="Beam3" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.893771, 0.434572, 0.110997, 0.448524, -0.86597, -0.221183, 0, 0.247472, -0.968894, 1.30838, 1.33915, 0.709846 )
-
 [node name="Beam9" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.979253, 0.202403, 0.00982619, -0.0122469, 0.107514, -0.994127, -0.202271, 0.973382, 0.107762, 0.0071975, -0.430679, 1.46359 )
-print_debug_info = true
-
-[node name="Spatial4" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.873908, 0.486091, 0, -0.486091, 0.873908, 0, 2.26611, 0.641985 )
-
-[node name="Beam" parent="Spatial4" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 0.634946, -0.772556, 0, 0.772556, 0.634946, 0.0675945, -0.843073, -0.391287 )
-
-[node name="Spatial5" type="Spatial" parent="."]
-transform = Transform( -0.497246, -0.814248, -0.299576, 0.00628163, -0.348658, 0.937229, -0.867587, 0.464151, 0.178484, -1.68877, 1.25398, 1.07117 )
-
-[node name="Beam" parent="Spatial5" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 0.634946, -0.772556, 0, 0.772556, 0.634946, 0.0675945, -0.843073, -0.391287 )
-
-[node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18379, 1.61057 )
-
-[node name="working" type="Spatial" parent="Spatial"]
-transform = Transform( 0.911806, 0.285048, -0.295558, -0.2776, 0.9583, 0.0678166, 0.302564, 0.0202113, 0.952914, 0.553139, -1.69776, -2.33684 )
-script = ExtResource( 4 )
-
-[node name="Beam2" parent="Spatial/working" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-
-[node name="working2" type="Spatial" parent="Spatial"]
-transform = Transform( 0.339515, 0.746766, -0.5719, -0.736068, 0.589479, 0.332742, 0.585603, 0.307987, 0.749808, -0.292292, -1.51422, -3.12412 )
-script = ExtResource( 4 )
-
-[node name="Beam2" parent="Spatial/working2" instance=ExtResource( 6 )]
-transform = Transform( -0.200392, 0.49665, -0.844501, 0.617118, 0.733476, 0.28492, 0.760926, -0.464061, -0.453474, 0.652496, 2.47745, -0.294963 )
-
-[node name="Spatial3" type="Spatial" parent="."]
-transform = Transform( -0.785613, 0.447908, -0.426837, 0.325695, 0.885936, 0.330212, 0.526055, 0.1204, -0.841885, -0.309107, -0.951775, -0.451925 )
-
-[node name="working" type="Spatial" parent="Spatial3"]
-transform = Transform( 0.99905, -0.0356205, -0.0250841, 0.035589, 0.999365, -0.00170062, 0.0251286, 0.000806391, 0.999683, 0, 0, 0 )
-script = ExtResource( 4 )
-
-[node name="Beam2" parent="Spatial3/working" instance=ExtResource( 6 )]
-transform = Transform( 0.965451, -0.213535, -0.149355, 0.212389, 0.976896, -0.0237682, 0.15098, -0.00877444, 0.988498, -4.76837e-07, 3, 0 )
-
-[node name="working2" type="Spatial" parent="Spatial3"]
-transform = Transform( 0.339515, 0.746766, -0.5719, -0.736068, 0.589479, 0.332742, 0.585603, 0.307987, 0.749808, 0, 0, 0 )
-script = ExtResource( 4 )
-
-[node name="Beam2" parent="Spatial3/working2" instance=ExtResource( 6 )]
-transform = Transform( -0.200392, 0.49665, -0.844501, 0.617118, 0.733476, 0.28492, 0.760926, -0.464061, -0.453474, 0.652496, 2.47745, -0.294963 )
+transform = Transform( 1, 0, 0, 0, 0.186044, -0.98254, 0, 0.98254, 0.186044, 0.0632977, -0.127701, 1.66618 )
+script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.0688209, -0.718855, 0, 0.0711666, 0.69516, 0, 0.0249062, -0.409942 )
+transform = Transform( 0.880453, 0.00867561, -0.465966, -0.300858, 0.0854204, -0.406208, 0.366453, 0.0492858, 0.786048, -0.313334, -0.0319001, -0.203405 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -163,7 +88,7 @@ material/0 = null
 shape = SubResource( 5 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.099, 0, 0, 0, 1, 0, 3.01357, 0 )
+transform = Transform( 1, 0, 0, 0, 0.0956925, -0.256323, 0, 0.025376, 0.966591, 0, 1.84923, 1.78146 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -176,3 +101,8 @@ shape = SubResource( 5 )
 
 [node name="Node2D" type="Node2D" parent="CanvasLayer"]
 script = ExtResource( 3 )
+
+[node name="Gun" type="Spatial" parent="."]
+transform = Transform( 0.976296, -0.161785, 0.143776, 0.198096, 0.935549, -0.292414, -0.0872015, 0.313964, 0.945422, -0.814521, 2.81081, 0.30049 )
+script = ExtResource( 4 )
+sputter_rate = 3000

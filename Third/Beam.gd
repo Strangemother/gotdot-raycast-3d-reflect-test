@@ -51,7 +51,7 @@ func render_collide():
 	show_hit_normal()
 	show_surface_vector()
 	show_reflect()
-	# draw_reflect_lines()
+	draw_reflect_lines()
 	
 	
 
